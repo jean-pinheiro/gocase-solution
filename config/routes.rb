@@ -7,6 +7,7 @@ Rails.application.routes.draw do
       get 'list_per_channel/:purchase_channel', to: 'orders#list_per_channel'
       resources :batches
       get 'create_batch/:purchase_channel', to: 'batches#create'
+      get 'production_batch/:reference', to: 'batches#production'
     end
   end
 end

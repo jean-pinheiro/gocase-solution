@@ -22,6 +22,19 @@ module Api
         end
       end
 
+      def production
+        batch = Batch.where(reference: params[:reference]).first
+                
+        orders = batch.orders
+
+        orders.each { |o| 
+          o.status = "production"
+          o.save()
+        }
+
+        render json: {status: 'SUCCESS', message:'Batch sent to Production', data: orders},status: :ok 
+      end
+
       private
 
         def batch_params
