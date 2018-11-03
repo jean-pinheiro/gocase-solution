@@ -30,7 +30,7 @@ ActiveRecord::Schema.define(version: 20181103114359) do
     t.string   "reference"
     t.string   "purchase_channel"
     t.string   "client_name"
-    t.text     "addres",           limit: 65535
+    t.text     "address",          limit: 65535
     t.string   "delivery_service"
     t.float    "total_value",      limit: 24
     t.text     "line_items",       limit: 65535

@@ -4,7 +4,7 @@ class CreateOrders < ActiveRecord::Migration[5.0]
       t.string :reference
       t.string :purchase_channel
       t.string :client_name
-      t.text :addres
+      t.text :address
       t.string :delivery_service
       t.float :total_value
       t.text :line_items
