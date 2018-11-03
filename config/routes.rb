@@ -8,6 +8,7 @@ Rails.application.routes.draw do
       resources :batches
       get 'create_batch/:purchase_channel', to: 'batches#create'
       get 'production_batch/:reference', to: 'batches#production'
+      get 'close_batch/:reference/:delivery_service', to: 'batches#close'
     end
   end
 end

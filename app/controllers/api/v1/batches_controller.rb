@@ -35,6 +35,20 @@ module Api
         render json: {status: 'SUCCESS', message:'Batch sent to Production', data: orders},status: :ok 
       end
 
+      def close
+        batch = Batch.where(reference: params[:reference]).first
+        orders = batch.orders
+
+        orders.each { |o|
+          o.status ="sent"
+          o.delivery_service = params[:delivery_service]
+          o.save()
+        }
+
+      
+        render json: {status: 'SUCCESS', message:'Batch Closed', data: orders},status: :ok 
+      end
+
       private
 
         def batch_params
