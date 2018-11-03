@@ -16,6 +16,12 @@ module Api
         end
       end
 
+      def show_status
+        order = Order.where(reference: params[:reference]).first
+
+        render json: {status: 'SUCCESS', message:'Status of Order', data:order.status},status: :ok
+      end
+
       
       private
 
