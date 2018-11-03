@@ -22,6 +22,15 @@ module Api
         render json: {status: 'SUCCESS', message:'Status of Order', data:order.status},status: :ok
       end
 
+       def financial_report
+        
+        num_or = Order.select('COUNT(purchase_channel) as qty, SUM(total_value) as total, purchase_channel')
+          .group(:purchase_channel)
+               
+        render json: {status: 'SUCCESS', message:'Financial Report by Purchase Channel', data:num_or},status: :ok
+      
+      end
+
       
       private
 
