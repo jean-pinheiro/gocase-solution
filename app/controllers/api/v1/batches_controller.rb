@@ -44,7 +44,6 @@ module Api
           o.delivery_service = params[:delivery_service]
           o.save()
         }
-
       
         render json: {status: 'SUCCESS', message:'Batch Closed', data: orders},status: :ok 
       end
