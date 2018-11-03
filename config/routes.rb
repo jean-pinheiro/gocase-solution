@@ -6,6 +6,7 @@ Rails.application.routes.draw do
       get 'financial_report/', to: 'orders#financial_report'
       get 'list_per_channel/:purchase_channel', to: 'orders#list_per_channel'
       resources :batches
+      get 'create_batch/:purchase_channel', to: 'batches#create'
     end
   end
 end
