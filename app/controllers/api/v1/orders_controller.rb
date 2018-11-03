@@ -31,6 +31,15 @@ module Api
       
       end
 
+      def list_per_channel
+        orders = Order.where(purchase_channel: params[:purchase_channel])
+         render json: {
+            status: 'SUCCESS', 
+            message:'Order Listed per Purchase Channel', 
+            data: orders
+          },status: :ok
+      end
+
       
       private
 
