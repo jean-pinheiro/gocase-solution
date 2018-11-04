@@ -10,6 +10,8 @@ module Api
 	        batch = Batch.new(batch_params)
 	        orders = Order.where(purchase_channel: params[:purchase_channel])
 	        orders.each do |o|
+	        	o.status = "production"
+	         	o.save()
 	            batch.orders << o 
 	        end  
 	        if batch.save
@@ -23,7 +25,7 @@ module Api
 	        batch = Batch.where(reference: params[:reference]).first
 	        orders = batch.orders
 	        orders.each { |o| 
-	          o.status = "production"
+	          o.status = "closing"
 	          o.save()
 	        }
 	        render json: {status: 'SUCCESS', message:'Batch sent to Production', data: orders},status: :ok 
